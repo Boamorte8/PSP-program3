@@ -6,7 +6,7 @@ function Statistics() {
   this.getCorrelation= getCorrelation;
   this.getRSquared = getRSquared;
   this.getYEstimate = getYEstimate;
-  
+
   function getMean(numbers){
     let sum = 0;
     if (Array.isArray(numbers)) {
@@ -20,6 +20,46 @@ function Statistics() {
       return null;
     }
     return (sum/numbers.length);
+  }
+
+  function getLogMean(numbers){
+    let sum = 0;
+    if (Array.isArray(numbers)) {
+      for (let number of numbers) {
+        if (typeof(number)=='string') {
+          return null;
+        }
+        sum += Math.log(number);
+      }
+    }else {
+      return null;
+    }
+    return (sum/numbers.length);
+  }
+
+  function getLogVariance(numbers){
+    let variance = 0;
+    let avg = getLogMean(numbers);
+    if (Array.isArray(numbers) && avg!=null) {
+      for (let number of numbers) {
+        if (typeof(number)=='string') {
+          return null;
+        }
+        variance += Math.pow((Math.log(number) - avg),2);
+      }
+    }else {
+      return null;
+    }
+    return sum/(numbers.length-1);
+  }
+
+  function getLogStd(numbers){
+    let variance = getLogVariance(numbers);
+    if (variance != null) {
+      return Math.sqrt(variance);
+    }else {
+      return null;
+    }
   }
 
   function getCovariance(numbers){
