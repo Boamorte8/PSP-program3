@@ -1,0 +1,8 @@
+{
+  "name": "PSPProgram2",
+  "version": "1.0.0",
+  "dependencies": {
+    "materialize": "^0.97.7"
+  }
+
+}

@@ -1,0 +1,30 @@
+{
+  "name": "PSPProgram2",
+  "version": "1.0.0",
+  "description": "The second program of PSP",
+  "main": "server.js",
+  "author": "James Garzon, Esteban Salazar, Sergio Loaiza",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "config": "^1.20.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.15",
+    "ejs": "^2.3.3",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
+  },
+  "engines": {
+    "node": "^6.5.0",
+    "npm": "^3.10.3"
+  },
+  "scripts": {
+    "start": "export NODE_ENV=dev && (nodemon server/server.js || node server/server.js)",
+    "test": "mocha server/test --timeout 10000 --recursive"
+  }
+}
