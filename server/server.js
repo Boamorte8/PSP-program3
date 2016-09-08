@@ -37,9 +37,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 
-app.get("/", function(req,res) {
-  res.render("index");
-})
+app.route('/*')
+  .get((req, res) => {
+    res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
+  });
 
 app.route("/statistics")
     .post(statistic.getMean);

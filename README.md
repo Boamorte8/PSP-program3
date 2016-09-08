@@ -1,4 +1,4 @@
-# PSP-program2
+# PSP-program3
 
 ###Procedimiento de instalación
 * npm install -g nodemon
@@ -7,6 +7,7 @@
 
 ###Para correr el proyecto
 * npm start
+* npm run start-windows
 
 ###Para correr las pruebas
 * npm test
