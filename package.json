@@ -29,7 +29,8 @@
     "npm": "^3.10.3"
   },
   "scripts": {
-    "start": "export NODE_ENV=dev && (nodemon server/server.js || node server/server.js)",
+    "start": "export NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)",
+    "start_windows": "set NODE_ENV=dev&& (nodemon server/server.js || node server/server.js)",
     "test": "mocha server/test --timeout 10000 --recursive"
   }
 }
