@@ -62,6 +62,20 @@ function Statistics() {
     }
   }
 
+  function getRanges(numbers){
+    let std = getLogStd(numbers);
+    let avg = getLogMean(numbers);
+    let ranges = [];
+    if (std != null && avg != null) {
+      for(var i=-2; i<=2; i++)
+      {
+        ranges.push(Math.pow(Math.E,(avg+(i*std))));
+      }
+    }else {
+      return null;
+    }
+  }
+
   function getCovariance(numbers){
     var covariance = 0;
     var x = [];
