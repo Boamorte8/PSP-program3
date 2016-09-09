@@ -15,21 +15,6 @@ class HomeComponent {
 
   }
 
-  getRegression(file){
-  	console.log('Regression')
-  	this.Stats.getRegression(file)
-  	.then(regression=>{
-  		this.regression = regression;
-  	})
-  }
-
-  getCorrelation(file){
-  	this.Stats.getCorrelation(file)
-  	.then(correlation=>{
-  		this.correlation = correlation;
-  	})
-  }
-
   getEstimated(file, xEstimate){
   	this.Stats.getEstimated(file, xEstimate)
   	.then(yEstimate=>{
@@ -47,6 +32,3 @@ angular.module('pspApp')
   });
 
 })();
-
-
-'use strict';
