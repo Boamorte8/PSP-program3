@@ -1,24 +1,29 @@
 'use strict';
 (function(){
 
-class HomeComponent {
+class PSP3Component {
   constructor(Stats) {
     this.message = 'Hello';
     this.Stats = Stats;
   }
 
-  getStatistics(file, xEstimate){
+  getStatistics(file){
   	console.log("getStatistics");
-  	this.getRegression(file);
-  	this.getCorrelation(file);
-  	this.getEstimated(file, 386);
+  	this.getEstimated(file);
 
   }
 
-  getEstimated(file, xEstimate){
-  	this.Stats.getEstimated(file, xEstimate)
-  	.then(yEstimate=>{
-  		this.yEstimate = yEstimate;
+  getEstimated(file){
+  	this.Stats.getEstimated(file)
+  	.then(response=>{
+      if (response.error) {
+        console.log(response.error);
+        this.mensajeError = response;
+      }
+  		else {
+  		  this.respuesta = response.mensaje;
+        console.log(response);
+  		}
   	})
   }
 
@@ -27,7 +32,7 @@ class HomeComponent {
 angular.module('pspApp')
   .component('psp3', {
     templateUrl: 'app/PSP3/psp3.html',
-    controller: HomeComponent,
+    controller: PSP3Component,
     controllerAs:'vm'
   });
 

@@ -7,6 +7,8 @@ let bodyParser = require('body-parser');
 let port = 8080;
 let statistic = require('./controllers/routes/statistic');
 let config = require('config'); //we load the db location from the JSON files
+var multer  = require('multer');
+var upload = multer();
 
 let root = path.normalize(__dirname + '/..');
 
@@ -42,8 +44,7 @@ app.route('/*')
     res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
   });
 
-app.route("/statistics")
-    .post(statistic.getMean);
+app.route("/statistics/calculate").post(upload.single('data'),statistic.getRanges);
     // .post(book.postBook);
 // app.route("/book/:id")
 //     .get(book.getBook)

@@ -10,7 +10,7 @@ class ThingFactory {
 	getEstimated(file) {
 	let defered = this.$q.defer();
 	let promise = defered.promise;
-        this.Upload.upload({ url: 'statistics/estimate', data: {data: file, xEstimate:xEstimate}})
+        this.Upload.upload({ url: 'statistics/calculate', data: {data: file}})
         .success(function(data) {
 				defered.resolve(data);
 		})
@@ -24,6 +24,5 @@ class ThingFactory {
 
 angular.module('pspApp')
   .factory('Stats', ThingFactory);
-
 
 })();

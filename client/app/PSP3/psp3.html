@@ -13,6 +13,16 @@
 			</div>
 	</div>
 	<br>
+	<div class="container" ng-if="vm.mensajeError">
+		<p>
+			{{vm.mensajeError}}
+		</p>
+	</div>
+	<div class="container" ng-if="vm.respuesta">
+		<p>
+			{{vm.respuesta}}
+		</p>
+	</div>
 	<div class="container" ng-if="vm.ranges">
 		<div class="card-panel z-depth-1">
 			<table class="striped center-align">

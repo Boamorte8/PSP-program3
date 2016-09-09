@@ -1,10 +1,32 @@
 function Statistics() {
+  this.getRanges = getRanges;
   this.getMean = getMean;
   this.getLogMean = getLogMean;
   this.getLogVariance = getLogVariance;
   this.getLogStd = getLogStd;
-  this.getRanges = getRanges;
   this.getCovariance = getCovariance;
+
+  function getRanges(list){
+    var respuesta = {}
+    if (list) {
+      respuesta.mensaje = 'Todo esta bien';
+    }
+    else {
+      respuesta.error = 'Problemas con la lista';
+    }
+    return respuesta;
+    // let std = getLogStd(numbers);
+    // let avg = getLogMean(numbers);
+    // let ranges = [];
+    // if (std != null && avg != null) {
+    //   for(var i=-2; i<=2; i++)
+    //   {
+    //     ranges.push(Math.pow(Math.E,(avg+(i*std))));
+    //   }
+    // }else {
+    //   return null;
+    // }
+  }
 
   function getMean(numbers){
     let sum = 0;
@@ -61,19 +83,6 @@ function Statistics() {
     }
   }
 
-  function getRanges(numbers){
-    let std = getLogStd(numbers);
-    let avg = getLogMean(numbers);
-    let ranges = [];
-    if (std != null && avg != null) {
-      for(var i=-2; i<=2; i++)
-      {
-        ranges.push(Math.pow(Math.E,(avg+(i*std))));
-      }
-    }else {
-      return null;
-    }
-  }
 
   function getCovariance(numbers){
     var covariance = 0;
