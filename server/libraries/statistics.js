@@ -21,25 +21,35 @@ function Statistics() {
         var datos = determinarPartes(list);
         var covariance = getCovariance(datos);
         let average = getLogAverage(datos);
-
-        respDatos.verySmall = Math.exp(average - (2 * covariance));
-        respDatos.small = Math.exp(average - covariance);
-        respDatos.medium = Math.exp(average);
-        respDatos.large = Math.exp(average + covariance);
-        respDatos.veryLarge = Math.exp(average + (2 * covariance));
-        respuesta.datos = respDatos;
+        if (datos == null || covariance == null || average == null) {
+          respuesta.error = 'Los datos estan incompletos';
+        }
+        else {
+          respDatos.verySmall = Math.exp(average - (2 * covariance));
+          respDatos.small = Math.exp(average - covariance);
+          respDatos.medium = Math.exp(average);
+          respDatos.large = Math.exp(average + covariance);
+          respDatos.veryLarge = Math.exp(average + (2 * covariance));
+          respuesta.datos = respDatos;
+        }
 
       }
       else if (list[0][0]) {
         respuesta.mensaje = 'La lista tiene 1 columna';
         var covariance = getCovariance(list);
         let average = getLogAverage(list);
-        respDatos.verySmall = Math.exp(average - (2 * covariance));
-        respDatos.small = Math.exp(average - covariance);
-        respDatos.medium = Math.exp(average);
-        respDatos.large = Math.exp(average + covariance);
-        respDatos.veryLarge = Math.exp(average + (2 * covariance));
-        respuesta.datos = respDatos;
+        if (covariance == null || average == null) {
+          respuesta.error = 'Los datos estan incompletos';
+        }
+        else {
+          respDatos.verySmall = Math.exp(average - (2 * covariance));
+          respDatos.small = Math.exp(average - covariance);
+          respDatos.medium = Math.exp(average);
+          respDatos.large = Math.exp(average + covariance);
+          respDatos.veryLarge = Math.exp(average + (2 * covariance));
+          respuesta.datos = respDatos;
+
+        }
       }
       else {
         respuesta.error = 'La lista no tiene datos';
@@ -53,10 +63,18 @@ function Statistics() {
 
   function determinarPartes(lista) {
     var respuesta = [];
-    for (var i = 0; i < lista.length; i++) {
-      respuesta[i] = lista[i][0]/lista[i][1];
+    if (lista.length == 0) {
+      return null;
     }
-    return respuesta;
+    else {
+      for (var i = 0; i < lista.length; i++) {
+        if (lista[i] == null) {
+          return null;
+        }
+        respuesta[i] = lista[i][0]/lista[i][1];
+      }
+      return respuesta;
+    }
   }
 
 
@@ -64,7 +82,7 @@ function Statistics() {
     let sum = 0;
     if (Array.isArray(numbers)) {
       for (var i = 0; i < numbers.length; i++) {
-        if (typeof(numbers[i])=='string') {
+        if (typeof(numbers[i])=='string' || numbers[i] == NaN) {
           return null;
         }
         sum += Math.log(numbers[i]);
@@ -80,7 +98,7 @@ function Statistics() {
     let avg = getLogAverage(numbers);
     if (Array.isArray(numbers) && avg!=null) {
       for (var i = 0; i < numbers.length; i++) {
-        if (typeof(numbers[i])=='string') {
+        if (typeof(numbers[i])=='string' || numbers[i] == NaN) {
           return null;
         }
         sum += Math.pow((Math.log(numbers[i]) - avg),2);
@@ -93,8 +111,13 @@ function Statistics() {
 
   function getCovariance(numbers){
     var variance = getVariance(numbers);
-    var covariance = Math.sqrt(variance);
-    return covariance;
+    if (variance == null) {
+      return null;
+    }
+    else {
+      var covariance = Math.sqrt(variance);
+      return covariance;
+    }
   }
 
 }
