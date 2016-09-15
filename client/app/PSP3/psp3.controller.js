@@ -16,13 +16,13 @@ class PSP3Component {
   getEstimated(file){
   	this.Stats.getEstimated(file)
   	.then(response=>{
-      if (response.error) {
-        console.log(response.error);
-        this.mensajeError = response;
+      if (response.mensaje) {
+        this.respuesta = response.mensaje;
+        console.log(response);
       }
   		else {
-  		  this.respuesta = response.mensaje;
-        console.log(response);
+        console.log(response.error);
+        this.mensajeError = response;
   		}
   	})
   }

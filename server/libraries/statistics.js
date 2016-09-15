@@ -1,5 +1,7 @@
 function Statistics() {
   this.getRanges = getRanges;
+  this.determinarPartes = determinarPartes;
+  this.getLog = getLog;
   this.getMean = getMean;
   this.getLogMean = getLogMean;
   this.getLogVariance = getLogVariance;
@@ -9,7 +11,22 @@ function Statistics() {
   function getRanges(list){
     var respuesta = {}
     if (list) {
-      respuesta.mensaje = 'Todo esta bien';
+      if (list[0][2]) {
+        respuesta.error = 'La lista tiene mas de 2 columnas';
+        respuesta.datos = list;
+      }
+      else if (list[0][1]) {
+        var datos = determinarPartes(list);
+        respuesta.mensaje = 'La lista tiene 2 columnas';
+        respuesta.datos = datos;
+      }
+      else if (list[0][0]) {
+        respuesta.mensaje = 'La lista tiene 1 columna';
+        respuesta.datos = list;
+      }
+      else {
+        respuesta.error = 'La lista no tiene datos';
+      }
     }
     else {
       respuesta.error = 'Problemas con la lista';
@@ -26,6 +43,27 @@ function Statistics() {
     // }else {
     //   return null;
     // }
+  }
+
+  function determinarPartes(lista) {
+    var respuesta = [];
+    for (var dupla in lista) {
+      if (object.hasOwnProperty(dupla)) {
+
+      }
+    }
+    for (var i = 0; i < lista.length; i++) {
+      respuesta[i] = lista[i][0]/lista[i][1];
+    }
+    return respuesta;
+  }
+
+  function getLog(datos) {
+    var respuesta = [];
+    for (var i = 0; i < datos.length; i++) {
+      respuesta[i] = lista[i][0]/lista[i][1];
+    }
+    return respuesta;
   }
 
   function getMean(numbers){
