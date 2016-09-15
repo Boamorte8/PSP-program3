@@ -81,9 +81,17 @@ function Statistics() {
   function getLogAverage(numbers){
     let sum = 0;
     if (Array.isArray(numbers)) {
+      if(numbers.length==0){
+        throw new Error('empty list');
+      }
       for (var i = 0; i < numbers.length; i++) {
-        if (typeof(numbers[i])=='string' || numbers[i] == NaN) {
+
+        if (numbers[i] == NaN) {
           return null;
+        }
+        else if (typeof(numbers[i])=='string') {
+          throw new Error('not numbers list');
+
         }
         sum += Math.log(numbers[i]);
       }
