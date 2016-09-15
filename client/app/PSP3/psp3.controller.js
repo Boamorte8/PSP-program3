@@ -8,7 +8,6 @@ class PSP3Component {
   }
 
   getStatistics(file){
-  	console.log("getStatistics");
   	this.getEstimated(file);
 
   }
@@ -18,13 +17,10 @@ class PSP3Component {
   	.then(response=>{
       if (response.mensaje) {
         this.respuesta = response.mensaje;
-        console.log(response);
         this.ranges = response.datos;
       }
   		else {
-        console.log(response.error);
         Materialize.toast(response.error, 6000);
-
   		}
   	})
   }

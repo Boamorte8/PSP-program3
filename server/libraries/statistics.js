@@ -9,7 +9,10 @@ function Statistics() {
     var respuesta = {};
     var respDatos = {};
     if (list) {
-      if (list[0][2]) {
+      if (list[0] == null) {
+        respuesta.error = 'La lista esta vacia';
+      }
+      else if (list[0][2]) {
         respuesta.error = 'La lista tiene mas de 2 columnas';
         respuesta.datos = list;
       }
