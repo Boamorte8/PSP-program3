@@ -63,9 +63,12 @@ function Statistics() {
   function getLogAverage(numbers){
     let sum = 0;
     if (Array.isArray(numbers)) {
+      if(numbers.length==0){
+        throw new Error('empty list');
+      }
       for (var i = 0; i < numbers.length; i++) {
         if (typeof(numbers[i])=='string') {
-          return null;
+          throw new Error('not numbers list');
         }
         sum += Math.log(numbers[i]);
       }

@@ -42,6 +42,29 @@ describe('GetRanges', () => {
 
 });
 
+describe('GetLogAverage', () => {
+    beforeEach((done) => {
+        done();
+    });
+
+    describe('getLogAvg for empty array', function () {
+        it('Empty list should return "empty list"', function () {
+            let statistics = new Statistics();
+            let list = new Array();
+            assert.throws(function() { statistics.getLogAverage(list) }, Error, 'empty list');
+        });
+    });
+
+    describe('getLogAvg for not numbers array', function () {
+        it('Empty list should return "empty list"', function () {
+            let statistics = new Statistics();
+            let list = new Array('a','b','c');
+            assert.throws(function() { statistics.getLogAverage(list) }, Error, 'not numbers list');
+        });
+    });
+
+});
+
 // describe('determinarPartes', () => {
 //     beforeEach((done) => {
 //       done();
