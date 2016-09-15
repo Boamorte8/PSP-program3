@@ -19,10 +19,12 @@ class PSP3Component {
       if (response.mensaje) {
         this.respuesta = response.mensaje;
         console.log(response);
+        this.ranges = response.datos;
       }
   		else {
         console.log(response.error);
-        this.mensajeError = response;
+        Materialize.toast(response.error, 6000);
+
   		}
   	})
   }
