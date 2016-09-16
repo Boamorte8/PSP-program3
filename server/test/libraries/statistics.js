@@ -81,7 +81,6 @@ describe('GetRanges', () => {
 
 });
 
-<<<<<<< HEAD
 describe('determinarPartes', () => {
     beforeEach((done) => {
       done();
@@ -133,6 +132,22 @@ describe('getLogAverage', () => {
       });
     });
 
+    describe('Get average of logarithms for empty array', function () {
+        it('Empty list should return "empty list"', function () {
+            let statistics = new Statistics();
+            let list = new Array();
+            assert.throws(function() { statistics.getLogAverage(list) }, Error, 'empty list');
+        });
+    });
+
+    describe('Get average of logarithms for not numbers array', function () {
+        it('Empty list should return "empty list"', function () {
+            let statistics = new Statistics();
+            let list = new Array('a','b','c');
+            assert.throws(function() { statistics.getLogAverage(list) }, Error, 'not numbers list');
+        });
+    });
+
 });
 
 describe('getVariance', () => {
@@ -148,39 +163,33 @@ describe('getVariance', () => {
         let response = statistics.getVariance(datos);
         assert.equal(response, respuesta);
       });
-=======
-describe('GetLogAverage', () => {
-    beforeEach((done) => {
-        done();
     });
 
-    describe('getLogAvg for empty array', function () {
-        it('Empty list should return "empty list"', function () {
-            let statistics = new Statistics();
-            let list = new Array();
-            assert.throws(function() { statistics.getLogAverage(list) }, Error, 'empty list');
-        });
+    describe('Get variance with empty list', function() {
+      it('Response should return "empty list"', function() {
+        let datos = [];
+        let statistics = new Statistics();
+        assert.throws(function() { statistics.getVariance(datos) }, Error, 'empty list');
+      });
     });
 
-    describe('getLogAvg for not numbers array', function () {
+    describe('Get variance for not numbers array', function () {
         it('Empty list should return "empty list"', function () {
             let statistics = new Statistics();
             let list = new Array('a','b','c');
-            assert.throws(function() { statistics.getLogAverage(list) }, Error, 'not numbers list');
+            assert.throws(function() { statistics.getVariance(list) }, Error, 'not numbers list');
         });
->>>>>>> 12f581eaf2ee889f372dd8dcc4d69d12962f3ab9
     });
 
 });
 
-<<<<<<< HEAD
 describe('getCovariance', () => {
     beforeEach((done) => {
       done();
     });
 
-    describe('Get covariance with a number', function() {
-      it('Response should a a new number with the result 0.28640992566224327', function() {
+    describe('Get covariance with a list', function() {
+      it('Response should a number with the result 0.28640992566224327', function() {
         let respuesta = 0.28640992566224327;
         let datos = [[7], [12], [10], [12], [10], [12], [12], [12], [12], [8], [8], [8], [20], [14], [18], [12]];
         let statistics = new Statistics();
@@ -189,41 +198,21 @@ describe('getCovariance', () => {
       });
     });
 
+    describe('Get covariance with empty list', function() {
+      it('Response should return "empty list"', function() {
+        let datos = [];
+        let statistics = new Statistics();
+        assert.throws(function() { statistics.getCovariance(datos) }, Error, 'empty list');
+      });
+    });
+
+    describe('Get covariance for not numbers array', function () {
+        it('Empty list should return "empty list"', function () {
+            let statistics = new Statistics();
+            let list = new Array('a','b','c');
+            assert.throws(function() { statistics.getCovariance(list) }, Error, 'not numbers list');
+        });
+    });
+
+
 });
-=======
-// describe('determinarPartes', () => {
-//     beforeEach((done) => {
-//       done();
-//     });
-//
-//     describe('determinarPartes with normal list', function() {
-//       it('Response should a new array with the result [6, 6, 8.333333333333334, 10.333333333333334, 12.333333333333334, 16.4, 20.5, 21.75, 22.25, 23, 28.333333333333332, 29, 55.8]', function() {
-//         let respuesta = [6, 6, 8.333333333333334, 10.333333333333334, 12.333333333333334, 16.4, 20.5, 21.75, 22.25, 23, 28.333333333333332];
-//         let datos = [ [18, 3] , [18, 3], [25, 3], [31, 3], [37, 3], [82, 5], [82, 4], [87, 4], [89, 4], [230, 10], [85, 3]];
-//         let statistics = new Statistics();
-//         let response = statistics.determinarPartes(datos);
-//         assert.equal(response, respuesta);
-//       });
-//     });
-//
-//
-// });
-//
-// describe('getLog', () => {
-//     beforeEach((done) => {
-//       done();
-//     });
-//
-//     describe('determinarPartes with normal list', function() {
-//       it('Response should a new array with the result [6, 6, 8.333333333333334, 10.333333333333334, 12.333333333333334, 16.4, 20.5, 21.75, 22.25, 23, 28.333333333333332, 29, 55.8]', function() {
-//         let respuesta = [6, 6, 8.333333333333334, 10.333333333333334, 12.333333333333334, 16.4, 20.5, 21.75, 22.25, 23, 28.333333333333332];
-//         let datos = [ [18, 3] , [18, 3], [25, 3], [31, 3], [37, 3], [82, 5], [82, 4], [87, 4], [89, 4], [230, 10], [85, 3]];
-//         let statistics = new Statistics();
-//         let response = statistics.determinarPartes(datos);
-//         assert.equal(response, respuesta);
-//       });
-//     });
-//
-//
-// });
->>>>>>> 12f581eaf2ee889f372dd8dcc4d69d12962f3ab9

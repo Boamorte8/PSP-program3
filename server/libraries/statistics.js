@@ -86,10 +86,7 @@ function Statistics() {
       }
       for (var i = 0; i < numbers.length; i++) {
 
-        if (numbers[i] == NaN) {
-          return null;
-        }
-        else if (typeof(numbers[i])=='string') {
+        if (typeof(numbers[i])=='string' || numbers[i] == NaN) {
           throw new Error('not numbers list');
 
         }
